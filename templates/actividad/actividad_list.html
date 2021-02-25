@@ -1,0 +1,40 @@
+{% extends 'menu/index_menu.html' %}
+{% block content %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+
+			<td>#</td>
+			<td>Nombre Partida</td>
+			<td>Unidad</td>
+            <td>Descripcion de Partida</td>
+            <td>Forma de medicion</td>
+            <td>Metodo de Pago</td>
+            <td>Opciones</td>
+
+		</tr>
+	</thead>
+	<tbody>
+        {% if object_list %}
+        {% for actividad in object_list %}
+		<tr>
+			<td>{{ actividad.id }}</td>
+            <td>{{ actividad.NombrePartida }}</td>
+            <td>{{ actividad.Unidad }}</td>
+            <td>{{ actividad.DesPartida }}</td>
+            <td>{{ actividad.FormaMedicion }}</td>
+            <td>{{ actividad.MetodoPago }}</td>
+
+            <td>
+                <a class="btn btn-primary" href="{% url 'actividad_editar' actividad.id %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'actividad_eliminar' actividad.id %}">Eliminar</a>
+            </td>
+		</tr>
+        {% endfor %}
+        {% else %}
+        <h1>No hay registros</h1>
+        {% endif %}
+	</tbody>
+</table>
+{% endblock%}

@@ -1,0 +1,8 @@
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <h2>¿Desea Eliminar el Registro de {{ object }}?</h2>
+        <button type="submit">SÍ</button>
+        <a href="{% url 'listarCliente' %}">CANCELAR</a>
+    </form>
+{% endblock %}

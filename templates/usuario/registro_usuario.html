@@ -1,0 +1,17 @@
+{% block content %}
+    <h1>Registro</h1>
+<form class = "form" method="post">
+	{% csrf_token %}
+    {{ form.as_p }}
+	<button type="submit" id="submit">Registar</button>
+    <button><a href="{% url 'logout' %}">salir</a></button>
+</form>
+    {%  if messages %}
+        {% for message in messages %}
+        <div class="notification {{ message.tags}}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
